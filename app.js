@@ -6,3 +6,9 @@ var client = new Twitter({
   access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 });
+
+client.stream('statuses/filter', {track: 'i wish'}, function (stream) {
+  stream.on('data', function (tweet) {
+    console.log(tweet.text);
+  });
+});
