@@ -1,0 +1,22 @@
+{
+  "name": "i-wish",
+  "version": "1.0.0",
+  "description": "you wish i wrote a description (will be updated later)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/connorbode/i-wish.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/connorbode/i-wish/issues"
+  },
+  "homepage": "https://github.com/connorbode/i-wish",
+  "dependencies": {
+    "twitter": "^1.2.5"
+  }
+}
