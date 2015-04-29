@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/connorbode/i-wish",
   "dependencies": {
+    "es6-template-strings": "^0.1.0",
     "mongodb": "^2.0.28",
+    "tracer": "^0.7.4",
     "twitter": "^1.2.5"
   }
 }
