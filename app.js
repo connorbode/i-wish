@@ -60,6 +60,17 @@ var onTweet = function (tweet) {
 };
 
 // 
+// onTwitterError
+// --------------
+//
+// runs when there is an issue
+// with the twitter stream.
+//
+var onTwitterError = function (err) {
+  logger.error(err);
+};
+
+// 
 // onTwitterConnected
 // ------------------
 // 
@@ -69,6 +80,7 @@ var onTweet = function (tweet) {
 var onTwitterConnected = function (stream) {
   logger.info('twitter stream established');
   stream.on('data', onTweet);
+  stream.on('error', onTwitterError);
 };
 
 //
