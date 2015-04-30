@@ -4,7 +4,7 @@
   "description": "you wish i wrote a description (will be updated later)",
   "main": "index.js",
   "scripts": {
-    "start": "node bootstrap.js",
+    "start": "node bootstrap.js scrape",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
