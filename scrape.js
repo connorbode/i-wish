@@ -51,10 +51,7 @@ var dumpBuffer = function () {
 // the buffer.
 // 
 var onTweet = function (tweet) {
-  var tweetOnly = {
-    tweet: tweet.text
-  };
-  buffer.push(tweetOnly);
+  buffer.push(tweet);
   if (buffer.length > bufferLimit)
     dumpBuffer();
 };
