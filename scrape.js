@@ -1,6 +1,6 @@
 var Twitter     = require('twitter');
 var MongoClient = require('mongodb').MongoClient;
-var logger      = require('tracer').colorConsole();
+var logger      = require('tracer').dailyfile({root: './logs'});
 var t           = require('es6-template-strings');
 
 var client = new Twitter({
