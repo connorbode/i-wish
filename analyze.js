@@ -1,7 +1,9 @@
-var MongoClient = require('mongodb').MongoClient;
-var logger      = require('tracer').colorConsole();
-var t           = require('es6-template-strings');
+var MongoClient   = require('mongodb').MongoClient;
+var logger        = require('tracer').colorConsole();
+var t             = require('es6-template-strings');
+var EventEmitter  = require('events').EventEmitter;
 
+var docEvents = new EventEmitter();
 var wishes = {};
 var docLimit = 100;
 var numDocs = 0;
@@ -26,7 +28,7 @@ var onEndOfDocs = function () {
 
 //
 // onDoc
-// -------
+// -----
 //
 // runs every time a doc is grabbed from 
 // the database.
@@ -46,6 +48,50 @@ var onDoc = function (doc) {
 
   // if (numDocs > docLimit)
   //   onEndOfDocs();
+};
+
+// 
+// registerExperiment
+// ------------------
+//
+// loads an experiment file and registers
+// the appropriate callbacks
+//
+// accepts the following variables:
+//
+// - `filename`: the name of the experiment
+// 
+// experiments should export the following
+// methods:
+//
+// - `onDoc`: called when a doc is received 
+//    from Mongo
+//
+// - `onEndOfDocs`: called when there 
+//    are no more documents
+//
+var registerExperiment = function (filename) {
+  var experiment = require('./experiments/' + filename);
+
+  if (experiment.onDoc)
+    docEvents.addListener('doc', experiment.onDoc);
+
+  if (experiment.onEndOfDocs)
+    docEvents.addListener('end', experiment.onEndOfDocs);
+};
+
+//
+// registerExperiments
+// -------------------
+//
+// Registers all experiments for 
+// analysis
+//
+var registerExperiments = function () {
+  var experiments = [ 'most-common' ];
+  experiments.forEach(function (e) {
+
+  });
 };
 
 //
